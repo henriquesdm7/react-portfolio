@@ -37,7 +37,7 @@ const AnimatedDarkModeIcon = ({ isDarkMode }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             style={{
-                cursor: "default",
+                cursor: "pointer",
                 ...svgContainerProps
             }}
         >
