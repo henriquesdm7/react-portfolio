@@ -10,7 +10,7 @@ const App = () => {
 
     return (
         <div className={darkMode ? "dark" : ""}>
-            <Header toggleDarkMode={toggleDarkMode} />
+            <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <div className="app-body-content">
 
             </div>
