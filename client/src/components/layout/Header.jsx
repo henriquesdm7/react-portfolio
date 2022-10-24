@@ -1,9 +1,24 @@
 import DarkModeButton from "../buttons/DarkModeButton";
+import { animated, useSpring } from "react-spring";
+import DarkModeToggle from "../toggles/DarkModeToggle";
 
 const Header = ({ darkMode, toggleDarkMode }) => {
+    const properties = {
+        light: {
+            transform: "rotate(0deg)",
+        },
+        dark: {
+            transform: "rotate(0deg)",
+        },
+        // springConfig: { mass: 4, tension: 250, friction: 35 }
+        springConfig: {}
+    };
+    const { transform } = properties[darkMode ? "dark" : "light"];
+    const headerProps = useSpring({ transform, config: properties.springConfig });
+
     return (
         <>
-            <header className="dark:text-gray-400 text-gray-600 dark:bg-gray-900 body-font">
+            <animated.header className="dark:text-gray-400 text-gray-600 dark:bg-gray-900 body-font" style={headerProps}>
                 <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                     <a className="flex title-font font-medium items-center dark:text-white text-gray-900 mb-4 md:mb-0">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
@@ -23,8 +38,9 @@ const Header = ({ darkMode, toggleDarkMode }) => {
                         </svg>
                     </button>
                 </div>
-            </header>
+            </animated.header>
             <DarkModeButton darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         </>
     )
 }
