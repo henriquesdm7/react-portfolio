@@ -11,7 +11,8 @@ const AnimatedDarkModeIcon = ({ isDarkMode }) => {
         },
         moon: {
             r: 5,
-            transform: "rotate(90deg)",
+            // transform: "rotate(90deg)",
+            transform: "rotate(360deg)",
             cx: 30,
             cy: 0,
             opacity: 1
